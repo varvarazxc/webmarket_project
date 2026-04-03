@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMarket | Готовые сайты на любой вкус</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                Web<span>Market</span>
+                <span class="logo-icon">🚀</span>
+            </div>
+            <nav class="nav">
+                <a href="#catalog">Каталог</a>
+                <a href="#advantages">Почему мы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-login" id="loginBtn">Вход</button>
+                <button class="btn-register" id="registerBtn">Регистрация</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Готовые сайты <br>которые работают на вас</h1>
+                <p>Лендинги, интернет-магазины, CRM-системы — под ключ. Передаём права, исходники и помогаем с запуском.</p>
+                <div class="hero-buttons">
+                    <a href="#catalog" class="btn btn-primary">Смотреть каталог</a>
+                    <a href="#contacts" class="btn btn-secondary">Задать вопрос</a>
+                </div>
+            </section>
+
+            <section id="catalog">
+                <h2 class="section-title">🔥 Что сейчас в продаже</h2>
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="landing">Лендинги</button>
+                    <button class="filter-btn" data-filter="shop">Магазины</button>
+                    <button class="filter-btn" data-filter="dashboard">CRM / Дашборды</button>
+                </div>
+                <div class="products-grid" id="productsGrid"></div>
+            </section>
+
+            <section id="advantages" class="advantages">
+                <h2 class="section-title">Почему выбирают нас</h2>
+                <div class="adv-grid">
+                    <div class="adv-item">
+                        <i class="fas fa-code"></i>
+                        <h3>Чистый код</h3>
+                        <p>Без всяких заморочек — всё можно доработать самому</p>
+                    </div>
+                    <div class="adv-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Безопасная сделка</h3>
+                        <p>Договор, гарантия и передача прав</p>
+                    </div>
+                    <div class="adv-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Поддержка после покупки</h3>
+                        <p>Помогаем с установкой, даже если вы не умеете</p>
+                    </div>
+                    <div class="adv-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Запуск за 24 часа</h3>
+                        <p>Купил, залил на хостинг — и уже работает</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacts" class="contact-section">
+                <h2 class="section-title">Не нашли свой вариант?</h2>
+                <p>Оставьте заявку — подберём сайт под вашу задачу</p>
+                <div class="form-group">
+                    <input type="text" id="userName" placeholder="Как к вам обращаться">
+                    <input type="text" id="userContact" placeholder="Telegram / WhatsApp">
+                    <button id="submitBtn" class="btn btn-primary">Отправить</button>
+                </div>
+                <p id="formMessage" class="form-message"></p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 WebMarket — маркетплейс готовых сайтов. Сделано с чем то</p>
+        </div>
+    </footer>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Вход</button>
+                <button class="tab-btn" data-tab="register">Регистрация</button>
+            </div>
+            <div id="loginForm" class="auth-form active">
+                <div class="form-group-modal">
+                    <input type="email" id="loginEmail" placeholder="Email">
+                </div>
+                <div class="form-group-modal">
+                    <input type="password" id="loginPassword" placeholder="Пароль">
+                </div>
+                <button class="btn-submit" id="submitLogin">Войти</button>
+                <p class="auth-footer">Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрируйтесь</a></p>
+            </div>
+            <div id="registerForm" class="auth-form">
+                <div class="form-group-modal">
+                    <input type="text" id="regName" placeholder="Имя">
+                </div>
+                <div class="form-group-modal">
+                    <input type="email" id="regEmail" placeholder="Email">
+                </div>
+                <div class="form-group-modal">
+                    <input type="password" id="regPassword" placeholder="Пароль">
+                </div>
+                <div class="form-group-modal">
+                    <input type="password" id="regConfirmPassword" placeholder="Подтвердите пароль">
+                </div>
+                <button class="btn-submit" id="submitRegister">Создать аккаунт</button>
+                <p class="auth-footer">Уже есть аккаунт? <a href="#" id="switchToLogin">Войдите</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal">
+            <span class="close-modal close-payment">&times;</span>
+            <div class="payment-header">
+                <i class="fas fa-credit-card"></i>
+                <h3>Оплата заказа</h3>
+            </div>
+            <div id="cardForm" class="payment-form active">
+                <div class="payment-field"><label>Номер карты</label><input type="text" id="cardNumber" placeholder="0000 0000 0000 0000"></div>
+                <div class="payment-row">
+                    <div class="payment-field"><label>Срок</label><input type="text" id="cardExpiry" placeholder="MM/YY"></div>
+                    <div class="payment-field"><label>CVV</label><input type="text" id="cardCvv" placeholder="123"></div>
+                </div>
+                <div class="payment-field"><label>Имя держателя</label><input type="text" id="cardName" placeholder="IVAN IVANOV"></div>
+            </div>
+            <div class="order-summary">
+                <div class="summary-row"><span>Товар:</span><span id="paymentProductName">-</span></div>
+                <div class="summary-row total"><span>Сумма:</span><span id="paymentAmount">0 ₽</span></div>
+            </div>
+            <button id="payNowBtn" class="btn-primary pay-now-btn">Оплатить</button>
+        </div>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
